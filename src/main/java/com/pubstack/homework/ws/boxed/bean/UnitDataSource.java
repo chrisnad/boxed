@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * The type Data source.
  */
-public class DataSourceUnit {
+public class UnitDataSource {
 
     private String target_path;
 
@@ -16,12 +16,12 @@ public class DataSourceUnit {
     @JsonIgnore
     private long hierarchy;
 
-    public DataSourceUnit computeHierarchy() {
+    public UnitDataSource computeHierarchy() {
         hierarchy = target_path.chars().filter(ch -> ch == '/').count();
         return this;
     }
 
-    public DataSourceUnit addCount(long count) {
+    public UnitDataSource addCount(long count) {
         this.count += count;
         return this;
     }

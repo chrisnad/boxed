@@ -84,11 +84,10 @@ components:
          properties:
             target:
                type: string
-            count:
-               type: string
             time:
                type: string
-               format: date-time
+            count:
+               type: long
       MergeObject:
          description: List of all aggregations
          properties:
