@@ -10,6 +10,7 @@
 	<groupId>com.pubstack.homework.ws</groupId>
 	<artifactId>boxed</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>boxed</name>
 	<description>Spring Boot WebService For Pubstack - Homework</description>
 
@@ -36,6 +37,81 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope> <!-- provided: tomcat/lib/servlet-api.jar -->
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-spi</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-core</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.joschi.jackson</groupId>
+			<artifactId>jackson-datatype-threetenbp</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.threeten</groupId>
+			<artifactId>threetenbp</artifactId>
+			<version>1.3.1</version>
 		</dependency>
 	</dependencies>
 
@@ -65,25 +141,25 @@
 						<goals>
 							<goal>generate</goal>
 						</goals>
-<!--						<configuration>-->
-<!--							<inputSpec>${project.basedir}/src/main/resources/esignsante-ws.yaml</inputSpec>-->
-<!--							<language>spring</language>-->
-<!--							<library>spring-boot</library>-->
-<!--							<ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>-->
-<!--							<configOptions>-->
-<!--								<basePackage>fr.asipsante.api.sign.ws</basePackage>-->
-<!--								<configPackage>fr.asipsante.api.sign.config</configPackage>-->
-<!--								<modelPackage>fr.asipsante.api.sign.ws.model</modelPackage>-->
-<!--								<apiPackage>fr.asipsante.api.sign.ws.api</apiPackage>-->
-<!--								<sourceFolder>src/main/java</sourceFolder>-->
-<!--								<dateLibrary>threetenbp</dateLibrary>-->
-<!--								<delegatePattern>true</delegatePattern>-->
-<!--								<useBeanValidation>true</useBeanValidation>-->
-<!--								<skipOverwrite>true</skipOverwrite>-->
-<!--								<disableHtmlEscaping>true</disableHtmlEscaping>-->
-<!--							</configOptions>-->
-<!--							<withXml>true</withXml>-->
-<!--						</configuration>-->
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/boxed-ws.yaml</inputSpec>
+							<language>spring</language>
+							<library>spring-boot</library>
+							<ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
+							<configOptions>
+								<basePackage>com.pubstack.homework.ws.boxed.app</basePackage>
+								<configPackage>com.pubstack.homework.ws.boxed.conf</configPackage>
+								<modelPackage>com.pubstack.homework.ws.boxed.model</modelPackage>
+								<apiPackage>com.pubstack.homework.ws.boxed.api</apiPackage>
+								<sourceFolder>src/main/java</sourceFolder>
+								<dateLibrary>threetenbp</dateLibrary>
+								<delegatePattern>true</delegatePattern>
+								<useBeanValidation>true</useBeanValidation>
+								<skipOverwrite>true</skipOverwrite>
+								<disableHtmlEscaping>true</disableHtmlEscaping>
+							</configOptions>
+							<withXml>true</withXml>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

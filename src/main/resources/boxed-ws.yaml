@@ -1,0 +1,98 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+   - description: SwaggerHub API Auto Mocking
+     url: https://virtserver.swaggerhub.com/cleitus/api/
+     variables:
+        port:
+           enum:
+              - '8080'
+           default: '8080'
+        basePath:
+           default: /
+info:
+   description: This is a simple API
+   version: "1.0.0"
+   title: Simple REST API
+   contact:
+      email: christiannader@hotmail.com
+   license:
+      name: Apache 2.0
+      url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+   - name: Post Operations
+     description: Returns Json Object
+paths:
+   /operations:
+      get:
+         summary: Liste des opérations disponibles.
+         operationId: getOperations
+         description: "List of aaaaaall the operations"
+         tags:
+            - client
+         responses:
+            '200':
+               description: Success.
+               content:
+                  application/json:
+                     schema:
+                        type: array
+                        items:
+                           type: string
+            '400':
+               description: Faulty Request.
+            '500':
+               description: Server Error.
+   /merge:
+      post:
+         tags:
+            - Post Operations
+         summary: merge
+         operationId: merge
+         description: whatismerge
+         responses:
+            '200':
+               description: Success, File Created.
+               content:
+                  application/json:
+                     schema:
+                        $ref: '#/components/schemas/MergeObject'
+            '400':
+               description: 'invalid input, invalid path'
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: '#/components/schemas/FullPath'
+            description: Absolute Path To Directory
+components:
+   schemas:
+      FullPath:
+         type: object
+         required:
+            - pathString
+         properties:
+            pathString:
+               description: le path.
+               type: string
+      Aggregation:
+         type: object
+         required:
+            - target
+            - time
+            - count
+         properties:
+            target:
+               type: string
+            count:
+               type: string
+            time:
+               type: string
+               format: date-time
+      MergeObject:
+         description: List of all aggregations
+         properties:
+            aggregateObject:
+               type: array
+               items:
+                  $ref: '#/components/schemas/Aggregation'
